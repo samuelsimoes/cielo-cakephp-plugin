@@ -57,7 +57,7 @@ if($this->request->is('post')) {
     $this->Cielo->pedido_id = 20;
     $this->Cielo->cc_bandeira = 'visa';
     $this->Cielo->cc_produto = 2; #parcelas pela loja
-    $this->Cielo->autenticar = 1; #autorizar somente se autenticada
+    $this->Cielo->autorizar = 1; #autorizar somente se autenticada
     $this->Cielo->capturar = false; #captura automática
     $this->Cielo->pedido_valor = $this->Cielo->converterValor(250.25);
     $this->Cielo->pedido_data_hora = $this->Cielo->converterData('2012-09-03 20:15:16');
@@ -82,7 +82,7 @@ if($this->request->is('post')) {
     $this->Cielo->cc_codigo_seguranca = 123;
     $this->Cielo->cc_bandeira = 'visa';
     $this->Cielo->cc_produto = 2; #parcelas pela loja
-    $this->Cielo->autenticar = 1; #autorizar somente se autenticada
+    $this->Cielo->autorizar = 1; #autorizar somente se autenticada
     $this->Cielo->capturar = false; #captura automática
     $this->Cielo->pedido_valor = $this->Cielo->converterValor(250.25);
     $this->Cielo->pedido_data_hora = $this->Cielo->converterData('2012-09-03 20:15:16');
