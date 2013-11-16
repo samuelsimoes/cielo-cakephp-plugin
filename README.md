@@ -3,7 +3,7 @@
 
 O Cielo CakePHP Plugin foi desenvolvido para auxiliar nas tarefas envolvendo o webservice de transações da Cielo para eCommerces, bem como redirecionamentos e tratamento dos retornos.
 
-Apesar dos meus esforços para documentar o plugin eu recomendo fortemente a leitura do manual oficial para desenvolvedores da Cielo.
+**IMPORTANTE: Apesar dos meus esforços para documentar o plugin eu recomendo fortemente a leitura do manual oficial para desenvolvedores da Cielo.**
 
 ##Requisitos
 
@@ -24,14 +24,14 @@ Em sua aplicação, preferencialmente em `app/Config/bootstrap.php`, defina as c
 ```php
 <?php
 Configure::write('Cielo',array(
-    'testando' => true, #Se vai utilizar o ambiente de testes da Cielo
-    'buy_page_cielo' => true
-    'loja_id' => 1001734898,
-    'loja_chave' => 'e84827130b9837473681c2787007da5914d6359947015a5cdb2b8843db0fa832',
-    'caminho_certificado_ssl' => APP . '/VeriSignClass3PublicPrimaryCertificationAuthority-G5.crt'
+	'testando' => true, #Se vai utilizar o ambiente de testes da Cielo
+	'buy_page_cielo' => true
+	'loja_id' => 1001734898,
+	'loja_chave' => 'e84827130b9837473681c2787007da5914d6359947015a5cdb2b8843db0fa832',
+	'caminho_certificado_ssl' => APP . '/VeriSignClass3PublicPrimaryCertificationAuthority-G5.crt'
 ));
 ```
-    
+
 ##Uso
 
 O uso do plugin é bastante simples e todo o processo se dá com o uso do component Cielo no seu controller.
@@ -54,42 +54,42 @@ Abaixo alguns exemplos:
 <?php
 /* No PedidosController.php */
 if($this->request->is('post')) {
-    $this->Cielo->pedido_id = 20;
-    $this->Cielo->cc_bandeira = 'visa';
-    $this->Cielo->cc_produto = 2; #parcelas pela loja
-    $this->Cielo->autorizar = 1; #autorizar somente se autenticada
-    $this->Cielo->capturar = false; #captura automática
-    $this->Cielo->pedido_valor = $this->Cielo->converterValor(250.25);
-    $this->Cielo->pedido_data_hora = $this->Cielo->converterData('2012-09-03 20:15:16');
-    $this->Cielo->pagamento_qtd_parcelas = 2;
-    $this->Cielo->url_retorno = Router::url(array('action' => 'retorno_cielo', 20), true);
+	$this->Cielo->pedido_id = 20;
+	$this->Cielo->cc_bandeira = 'visa';
+	$this->Cielo->cc_produto = 2; #parcelas pela loja
+	$this->Cielo->autorizar = 1; #autorizar somente se autenticada
+	$this->Cielo->capturar = false; #captura automática
+	$this->Cielo->pedido_valor = $this->Cielo->converterValor(250.00);
+	$this->Cielo->pedido_data_hora = $this->Cielo->converterData('2012-09-03 20:15:16');
+	$this->Cielo->pagamento_qtd_parcelas = 2;
+	$this->Cielo->url_retorno = Router::url(array('action' => 'retorno_cielo', 20), true);
 
-    $this->Cielo->finalizar();
+	$this->Cielo->finalizar();
 }
 
 $retorno_cielo = $this->Cielo->retornoTransacao();
 ```
-    
+
 ###Criando uma transação BuyPage Loja
 
 ```php
 <?php
 /* No PedidosController.php */
 if($this->request->is('post')) {
-    $this->Cielo->pedido_id = 20;
-    $this->Cielo->cc_numero = 123457812345678;
-    $this->Cielo->cc_validade = 201805;
-    $this->Cielo->cc_codigo_seguranca = 123;
-    $this->Cielo->cc_bandeira = 'visa';
-    $this->Cielo->cc_produto = 2; #parcelas pela loja
-    $this->Cielo->autorizar = 1; #autorizar somente se autenticada
-    $this->Cielo->capturar = false; #captura automática
-    $this->Cielo->pedido_valor = $this->Cielo->converterValor(250.25);
-    $this->Cielo->pedido_data_hora = $this->Cielo->converterData('2012-09-03 20:15:16');
-    $this->Cielo->pagamento_qtd_parcelas = 2;
-    $this->Cielo->url_retorno = Router::url(array('action' => 'retorno_cielo', 20), true);
+	$this->Cielo->pedido_id = 20;
+	$this->Cielo->cc_numero = 123457812345678;
+	$this->Cielo->cc_validade = 201805;
+	$this->Cielo->cc_codigo_seguranca = 123;
+	$this->Cielo->cc_bandeira = 'visa';
+	$this->Cielo->cc_produto = 2; #parcelas pela loja
+	$this->Cielo->autorizar = 1; #autorizar somente se autenticada
+	$this->Cielo->capturar = false; #captura automática
+	$this->Cielo->pedido_valor = $this->Cielo->converterValor(250.00);
+	$this->Cielo->pedido_data_hora = $this->Cielo->converterData('2012-09-03 20:15:16');
+	$this->Cielo->pagamento_qtd_parcelas = 2;
+	$this->Cielo->url_retorno = Router::url(array('action' => 'retorno_cielo', 20), true);
 
-    $this->Cielo->finalizar();
+	$this->Cielo->finalizar();
 }
 
 $retorno_cielo = $this->Cielo->retornoTransacao();
@@ -103,10 +103,10 @@ $cielo_transacao_id = '100699306914AC581001';
 $consulta = $this->Cielo->consultarTransacao($cielo_transacao_id);
 
 if($consulta) {
-    $this->set(compact('consulta'));
+	$this->set(compact('consulta'));
 } else {
-    $erro = $this->Cielo->erro['mensagem'];
-    $this->Session->setFlash($erro);
+	$erro = $this->Cielo->erro['mensagem'];
+	$this->Session->setFlash($erro);
 }
 
 $this->redirect($this->referer());
@@ -120,29 +120,29 @@ $cielo_transacao_id = '100699306914AC581001';
 $cancelamento = $this->Cielo->cancelarTransacao($cielo_transacao_id);
 
 if($cancelamento) {
-    $this->Session->setFlash('Transação cancelada com sucesso');
+	$this->Session->setFlash('Transação cancelada com sucesso');
 } else {
-    $erro = $this->Cielo->erro['mensagem'];
-    $this->Session->setFlash($erro);
+	$erro = $this->Cielo->erro['mensagem'];
+	$this->Session->setFlash($erro);
 }
 
 $this->redirect($this->referer());
 ```
-    
+
 ###Capturando uma transação
 Você pode capturar valores parciais passando o valor no formato padrão do webservice da Cielo através do segundo parâmetro usando o método **capturarTransacao()**. Caso o valor a ser capturado seja omitido o valor total irá ser capturado.
 
 ```php
 <?php
 $cielo_transacao_id = '100699306914AC581001';
-$valor_a_ser_capturado = $this->Cielo->converterValor(250.25);
+$valor_a_ser_capturado = $this->Cielo->converterValor(250.00);
 $captura = $this->Cielo->capturarTransacao($cielo_transacao_id, $valor_a_ser_capturado);
 
 if($captura) {
-    $this->Session->setFlash('Transação capturada com sucesso');
+	$this->Session->setFlash('Transação capturada com sucesso');
 } else {
-    $erro = $this->Cielo->erro['mensagem'];
-    $this->Session->setFlash($erro);
+	$erro = $this->Cielo->erro['mensagem'];
+	$this->Session->setFlash($erro);
 }
 
 $this->redirect($this->referer());
