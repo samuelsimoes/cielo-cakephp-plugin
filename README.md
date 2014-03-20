@@ -1,6 +1,12 @@
 #CakePHP Cielo  Plugin
 -----------------------------------------
 
+**ATENÇÃO: projeto abandonado!**
+
+**Devido a minha falta de tempo e falta de necessidade de usar este plugin o mesmo se encontra abandonado, ou seja, não receberá melhorias e nem será atualizado por mim. Caso você queria continuar o projeto de forma opensource, entre em contato para vermos a possibilidade da transferência do repositório.**
+
+---------------------
+
 O Cielo CakePHP Plugin foi desenvolvido para auxiliar nas tarefas envolvendo o webservice de transações da Cielo para eCommerces, bem como redirecionamentos e tratamento dos retornos.
 
 **IMPORTANTE: Apesar dos meus esforços para documentar o plugin eu recomendo fortemente a leitura do manual oficial para desenvolvedores da Cielo.**
